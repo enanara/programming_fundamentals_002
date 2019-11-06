@@ -23,23 +23,76 @@ const catalogue = [
 ];
 
 function countBooks() {
-  // Your code here
+  return catalogue.length;
+
 }
 
 function checkBook(book) {
-  // Your code here
+  for (let i=0; i<catalogue.length; i++){
+
+    var isInStock = false;
+
+    if (book === catalogue[i]) {
+      isInStock = true;
+      return isInStock;
+    } 
+    
+  }
+
+  return isInStock;
 }
 
 function countBooksByFirstLetter(letter) {
-  // Your code here
+  var numberOfBooks=0;
+  var bookName;
+  for (let i=0; i<catalogue.length; i++){
+    bookName = catalogue[i];
+    if (bookName[0]===letter){
+      numberOfBooks = numberOfBooks+ 1;
+      
+    }
+  }
+  return numberOfBooks;
 }
 
 function countBooksByKeyword(keyword) {
-  // Your code here
+
+
+  var numberThatContain = 0;
+
+  if (((typeof keyword)==="number")||((typeof keyword)==="boolean")){
+     keyword = keyword.toString();
+  }
+
+  //loop thru catalogue
+  for (let i =0; i< catalogue.length; i++)
+  {
+       //var splitArray =  catalogue[i].split(keyword);
+       if ((catalogue[i].toLowerCase()).includes(keyword.toLowerCase()))
+       {
+           numberThatContain++;
+       }
+  }
+
+  return numberThatContain;
+
 }
 
 function getBooksByAuthor(author) {
   // Your code here
+  const list =[];
+  for (let i =0; i< catalogue.length; i++){
+    var splitArray = catalogue[i].split("by");
+    if ((splitArray[1].toLowerCase()).includes(author.toLowerCase())){
+      list.push(catalogue[i]);
+    }
+  }
+  return list;
+  // check author name maybe use Inscludes method
+  // push index of catalogue in new array 
+
+
+
 }
 
 module.exports = {
